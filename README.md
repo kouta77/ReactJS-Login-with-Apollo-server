@@ -1,12 +1,14 @@
 <h1> Enmanuel React Login App</h1>
-features: 
--cool design!
--password encryption
--user login
--user signup
--route protection
--graphql backend
--auth security
+features:
+
+- Error tips
+- cool design!
+- password encryption
+- user login
+- user signup
+- route protection
+- graphql backend
+- auth security
 
  Steps to run this app demo:
 
