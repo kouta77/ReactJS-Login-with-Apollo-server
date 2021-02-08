@@ -10,7 +10,9 @@ features:
 - graphql backend
 - auth security
 
- Steps to run this app demo:
+
+<h1> Steps to run this app demo:</h1>
+
 
  <h1> The server </h1>
 
