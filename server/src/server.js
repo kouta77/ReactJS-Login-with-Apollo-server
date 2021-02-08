@@ -4,7 +4,6 @@ const { resolvers, typeDefs} = require('./schema')
 const port = process.env.PORT || 8080
 
 const server = new ApolloServer({ typeDefs, resolvers,   formatError: (err) => {
-
   if (err.message.startsWith("Database Error: ")) {
       return new Error('Internal server error');
     }

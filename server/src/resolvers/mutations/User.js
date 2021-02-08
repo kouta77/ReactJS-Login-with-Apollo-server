@@ -24,14 +24,9 @@ const User = {
         });
         if(!dbUser) throw new Error("User does not exist!");
         console.log("user data", dbUser);
-        let samePassword = false;
-
-        bcrypt.compare(args.password, dbUser.password, (e,result)=> {
-                console.log('crypt result: ',result);
-                samePassword = result;
-            }
-        );
         
+        const samePassword = await bcrypt.compare(args.password, dbUser.password);
+
         if(samePassword == true)
         return dbUser;
         else
