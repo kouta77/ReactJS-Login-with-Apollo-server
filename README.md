@@ -2,12 +2,22 @@
 
 
 # Steps to run this app demo:
-* 'npm install' server and react_login folders
+
+# The server
+
+* First, import mysql database
+
+* Open 'server' folder and run npm install'
 
 * Change .env 'DATABASE_URL' to your local mysql database
 
-* import mysql database (Can try prisma migrate dev --preview-feature to generate the database from prisma schema)
+* Open a terminal windows in the server folder and run this comand npx prisma migrate dev --preview-feature to migrate the database from schema to mysql
 
-* npx prisma generate
+* Run this command in the terminal (server folder) npx prisma generate
 
-* npm start server and then react_login.
+
+# The client
+
+* Open react_login folder and run npm install
+
+* Run npm start and wait for the webapp to load.
