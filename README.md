@@ -15,7 +15,7 @@
 
 * Run this command in the terminal (server folder) npx prisma generate
 <h1>NOTE:</h1>
-there should be an output like this: Server ready at http://localhost:4000/, if the port is not 4000, enter react_login(client)/src/backend/userMutations.js and change "GRAPTH_URL" ti the right server value.
+there should be an output like this: 'Server ready at http://localhost:4000/', if the port is not 4000, enter react_login(client)/src/backend/userMutations.js and change "GRAPTH_URL" to the right server value.
 
 <h1> The client </h1>
 
