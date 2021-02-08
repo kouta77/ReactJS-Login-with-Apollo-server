@@ -14,7 +14,8 @@
 * Open a terminal windows in the server folder and run this comand npx prisma migrate dev --preview-feature to migrate the database from schema to mysql
 
 * Run this command in the terminal (server folder) npx prisma generate
-(there should be an output like this: Server ready at http://localhost:4000/, if the port is not 4000, enter react_login(client)/src/backend/userMutations.js and change "GRAPTH_URL" ti the right server value)
+<h1>NOTE:</h1>
+there should be an output like this: Server ready at http://localhost:4000/, if the port is not 4000, enter react_login(client)/src/backend/userMutations.js and change "GRAPTH_URL" ti the right server value.
 
 <h1> The client </h1>
 
