@@ -1,9 +1,9 @@
-# Enmanuel React Login APP
+<h1> Enmanuel React Login App</h1>
 
 
-# Steps to run this app demo:
+ Steps to run this app demo:
 
-# The server
+ <h1> The server </h1>
 
 * First, import mysql database
 
@@ -16,7 +16,7 @@
 * Run this command in the terminal (server folder) npx prisma generate
 
 
-# The client
+<h1> The client </h1>
 
 * Open react_login folder and run npm install
 
