@@ -58,7 +58,7 @@ const loginUser = async (usr,callback) => {
     );
     const data = await response.json();
     console.log(data);
-    if(data.errors.length > 0)
+    if(data.errors)
     callback(data.errors[0]);
     else
     callback(data.data.loginUser);
