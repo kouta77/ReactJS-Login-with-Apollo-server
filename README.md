@@ -18,7 +18,7 @@ features:
 
 * Run `npm install` to install dependencies
 
-* Change `/.env` db variables to match your database
+* Change `server/.env` _MYSQL_USER/MYSQL_PASSWORD/PORT_ variables to match mysql server
 
 * Run `npx prisma generate` in the terminal to generate prisma client
 
@@ -27,7 +27,7 @@ features:
 * Run `npm start` to run the server
 
 # NOTE:
-after the server starts, there should be an output like this: `Server ready at http://localhost:4000/`, if the port is not 4000, enter react_login/src/.env and change `GRAPHQL_PORT` to the right value.
+after the server starts, there should be an output like this: `Server ready at http://localhost:4000/`, if the port is not 4000, enter `react_login/src/`.env and change `GRAPHQL_PORT` to the right value.
 
 # The client
 
