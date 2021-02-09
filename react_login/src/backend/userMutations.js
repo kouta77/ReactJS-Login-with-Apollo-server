@@ -1,4 +1,4 @@
-const GRAPTH_URL = "http://localhost:4000/graphql"//process.env.GRAPHQL_URL;
+const GRAPTH_URL = process.env.REACT_APP_GRAPHQL_URL;
 
 const registerUser = async (usr, callback) => {
   console.log('url', GRAPTH_URL)

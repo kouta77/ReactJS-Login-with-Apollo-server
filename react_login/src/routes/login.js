@@ -52,7 +52,7 @@ const Login = ({setToken}) => {
               </div>
 
               <form className="login100-form validate-form" onSubmit={(e)=> HandleLogin(e)}>
-                <div className="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                <div className="wrap-input100 validate-input m-b-26" data-validate="Email is required">
                   <span className="label-input100">Email</span>
                   <input className="input100" type="email" name="username" placeholder="Enter email" id="emailinput"  onChange={(e)=> {setEmail(e.target.value)}}></input>
                   <span className="focus-input100"></span>

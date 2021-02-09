@@ -40,19 +40,19 @@ const register = () => {
               <form className="login100-form validate-form">   
                 <div className="wrap-input100 validate-input m-b-26" data-validate="Username is required">
                   <span className="label-input100">Username</span>
-                  <input className="input100" type="text" name="username" placeholder="Enter username" id="nameinput"  onChange={(e)=> {setName(e.target.value)}}></input>
+                  <input className="input100" type="text" name="username" placeholder="Enter username" id="nameinput" required onChange={(e)=> {setName(e.target.value)}}></input>
                   <span className="focus-input100"></span>
                 </div>
 
-                <div className="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+                <div className="wrap-input100 validate-input m-b-26" data-validate="Email is required">
                   <span className="label-input100">Email</span>
-                  <input className="input100" type="email" name="email" placeholder="Enter email" id="emailinput"  onChange={(e)=> {setEmail(e.target.value)}}></input>
+                  <input className="input100" type="email" name="email" placeholder="Enter email" id="emailinput" required onChange={(e)=> {setEmail(e.target.value)}}></input>
                   <span className="focus-input100"></span>
                 </div>
 
                 <div className="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
                   <span className="label-input100">Password</span>
-                  <input className="input100" type="password" name="pass" placeholder="Enter password" id="passinput" onChange={(e)=> {setPass(e.target.value)}}></input>
+                  <input className="input100" type="password" name="pass" placeholder="Enter password" id="passinput" required onChange={(e)=> {setPass(e.target.value)}}></input>
                   <span className="focus-input100"></span>
                 </div>
 
@@ -64,9 +64,9 @@ const register = () => {
                     </a>
                   </div>
                 </div>
-
+                {/* onClick={() => { handleRegister()}} */}
                 <div className="container-login100-form-btn">
-                  <button  type="button" id="loginbtn" className="login100-form-btn" onClick={() => { handleRegister()}}>
+                  <button  type="submit" id="loginbtn" className="login100-form-btn" >
                     Register
                   </button>
                 </div>
