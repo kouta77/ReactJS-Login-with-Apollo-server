@@ -66,7 +66,7 @@ const register = () => {
                 </div>
                 {/* onClick={() => { handleRegister()}} */}
                 <div className="container-login100-form-btn">
-                  <button  type="submit" id="loginbtn" className="login100-form-btn" >
+                  <button  type="button" id="loginbtn" className="login100-form-btn" onClick={() => { handleRegister()}}>
                     Register
                   </button>
                 </div>
