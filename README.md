@@ -27,7 +27,7 @@ features:
 * Run `npm start` to run the server
 
 # NOTE:
-there should be an output like this: `Server ready at http://localhost:4000/`, if the port is not 4000, enter react_login/src/backend/userMutations.js and change `GRAPTH_URL` to the right port value.
+after the server starts, there should be an output like this: `Server ready at http://localhost:4000/`, if the port is not 4000, enter react_login/src/.env and change `GRAPHQL_PORT` to the right value.
 
 # The client
 
