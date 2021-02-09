@@ -14,17 +14,20 @@ features:
 
 
  # The server
+* Open a terminal/CMD and go to "/server" dir
 
-* Open 'server' folder and `run npm install`
+* Run `npm install` to install dependencies
 
-* Change .env `DATABASE_URL` to your local mysql database
+* Change `/.env` db variables to match your database
 
-* Run this command in the terminal (server folder) `npx prisma generate`
+* Run `npx prisma generate` in the terminal to generate prisma client
 
-* Open a terminal windows in the server folder and run this comand `npx prisma migrate dev --preview-feature` to migrate the model from schema to the db
+* Run `npx prisma migrate dev --preview-feature` to migrate the prisma schema to the db
+
+* Run `npm start` to run the server
 
 # NOTE:
-there should be an output like this: `Server ready at http://localhost:4000/`, if the port is not 4000, enter react_login(client)/src/backend/userMutations.js and change `GRAPTH_URL` to the right port value.
+there should be an output like this: `Server ready at http://localhost:4000/`, if the port is not 4000, enter react_login/src/backend/userMutations.js and change `GRAPTH_URL` to the right port value.
 
 # The client
 
