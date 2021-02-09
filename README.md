@@ -1,8 +1,7 @@
-<h1> Enmanuel React Login App</h1>
+# Enmanuel React Login App
 features:
 
 - Error tips
-- cool design!
 - password encryption
 - user login
 - user signup
@@ -11,25 +10,24 @@ features:
 - auth security
 
 
-<h1> Steps to run this app demo:</h1>
+# Steps to run this app demo:
 
 
- <h1> The server </h1>
+ # The server
 
-* First, import mysql database
+* Open 'server' folder and `run npm install`
 
-* Open 'server' folder and run npm install'
+* Change .env `DATABASE_URL` to your local mysql database
 
-* Change .env 'DATABASE_URL' to your local mysql database
+* Run this command in the terminal (server folder) `npx prisma generate`
 
-* Open a terminal windows in the server folder and run this comand npx prisma migrate dev --preview-feature to migrate the database from schema to mysql
+* Open a terminal windows in the server folder and run this comand `npx prisma migrate dev --preview-feature` to migrate the model from schema to the db
 
-* Run this command in the terminal (server folder) npx prisma generate
-<h1>NOTE:</h1>
-there should be an output like this: 'Server ready at http://localhost:4000/', if the port is not 4000, enter react_login(client)/src/backend/userMutations.js and change "GRAPTH_URL" to the right server value.
+# NOTE:
+there should be an output like this: `Server ready at http://localhost:4000/`, if the port is not 4000, enter react_login(client)/src/backend/userMutations.js and change `GRAPTH_URL` to the right port value.
 
-<h1> The client </h1>
+# The client
 
-* Open react_login folder and run npm install
+* Open react_login folder and `run npm install`
 
-* Run npm start and wait for the webapp to load.
+* Run `npm start` and wait for the webapp to load.
