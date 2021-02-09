@@ -31,6 +31,6 @@ after the server starts, there should be an output like this: `Server ready at h
 
 # The client
 
-* Open react_login folder and `run npm install`
+* Open react_login folder and run `npm install`
 
 * Run `npm start` and wait for the webapp to load.
