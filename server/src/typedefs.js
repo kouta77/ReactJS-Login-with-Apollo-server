@@ -18,12 +18,14 @@ const typedefs = gql`
         username: String!
         email: String!
         password: String!
+        avatar: String
     }
 
     input CreateUserInput {
         username: String!
         email: String!
         password: String!
+        avatar: String
     }
 `
 

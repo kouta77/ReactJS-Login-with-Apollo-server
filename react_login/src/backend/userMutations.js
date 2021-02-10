@@ -4,7 +4,7 @@ const registerUser = async (usr, callback) => {
   console.log('url', GRAPTH_URL)
     let theQuery = `
     mutation{
-        createUser(data:{username:"${usr.username}", email:"${usr.email}",password:"${usr.password}"}){
+        createUser(data:{username:"${usr.username}", email:"${usr.email}",password:"${usr.password}", avatar:"${usr.avatar}"}){
           username
           email
         }
@@ -42,6 +42,7 @@ const loginUser = async (usr,callback) => {
         loginUser(email:"${usr.email}", password:"${usr.password}"){
           username
           email
+          avatar
         }
       }
     `

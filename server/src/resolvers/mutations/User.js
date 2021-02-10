@@ -9,8 +9,10 @@ const User = {
         
         const password = await bcrypt.hash(args.data.password, 10);
         console.log('password', password)
+        console.log('IMG', args.data.avatar)
         let newUser = Prisma.CreateUserInput
-        newUser = {username: args.data.username, email: args.data.email, password: password}
+
+        newUser = {username: args.data.username, email: args.data.email, password: password, avatar: args.data.avatar}
 
         const createdUser = await prisma.userdata.create({data: newUser});
 

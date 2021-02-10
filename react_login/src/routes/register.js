@@ -1,6 +1,8 @@
 import React,{useState, useEffect} from 'react'
 import {registerUser} from '../backend/userMutations'
 import {Redirect} from 'react-router-dom'
+import Avatar from 'react-avatar-edit';
+import {getBase64} from '../components/utils';
 
 const register = () => {
     const [error, setError] = new useState('');
@@ -9,6 +11,8 @@ const register = () => {
     const [pass, setPass] = new useState('');
     const [pass2, setPass2] = new useState('');
     const [finished, setFinished] = new useState('');
+    const [preview, setPreview] = new useState();
+    let src = null//'./images/bg-01.jpg';
 
     const handleRegister = (e) => {
       e.preventDefault();
@@ -17,7 +21,7 @@ const register = () => {
       let validName = name.match(/^[a-zA-Z]+$/);
       let validPassword = pass===pass2? true : false
 
-      console.log('name val', validName);
+      console.log('FILE', preview);
 
       if(!emailValid){
         setError('invalid email!')
@@ -34,7 +38,7 @@ const register = () => {
         return null
       }
 
-      registerUser({username: name, email: email, password: pass}, (dat)=>{
+      registerUser({username: name, email: email, password: pass, avatar: preview}, (dat)=>{
         console.log('REGISTERED')
           if(dat.message)
               setError(dat.message)
@@ -44,7 +48,20 @@ const register = () => {
         })
     }
 
+    const onClose = () => {
+      setPreview(null)
+    }
+  
+  const onCrop = (preview) => {
+      setPreview(preview)
+    }
 
+  function onBeforeFileLoad(elem) {
+    if (elem.target.files[0].size > 2000000) {
+      alert("File is too big!");
+      elem.target.value = "";
+    }
+  }
 
     return(
         <>
@@ -64,7 +81,31 @@ const register = () => {
                 </span>
               </div>
 
-              <form className="login100-form validate-form "  onSubmit={(e) => { handleRegister(e)}}>   
+              <form className="login100-form validate-form "  onSubmit={(e) => { handleRegister(e)}}>  
+
+              <div>
+                  {
+                    preview? 
+                    <div style={{display: 'flex', flexDirection: 'row'}}>
+                      <img style={{borderRadius: 80, width: 150, height: 150}} src={ preview } />
+                    <div style={{flex: 1, justifyContent: 'flex-end'}}>
+                      <button className="txt1" type='button' onClick={()=> setPreview('')} >Delete avatar</button>
+                    </div>
+                    </div>
+                    :
+                    <Avatar
+                    width={150}
+                    height={150}
+                    onCrop={onCrop}
+                    onClose={onClose}
+                    src={null}
+                    onBeforeFileLoad={onBeforeFileLoad}
+                    /> 
+                  }
+                        
+              </div>
+
+
                 <div className="wrap-input100 validate-input m-b-26" data-validate="Username is required">
                   <span className="label-input100">Username</span>
                   <input className="input100" type="text" name="username" placeholder="Enter username" id="nameinput" required onChange={(e)=> {setName(e.target.value)}}></input>
@@ -93,7 +134,7 @@ const register = () => {
 
                   <div>
                     <a href="/login" className="txt1">
-                      Login
+                      Login Instead
                     </a>
                   </div>
                 </div>

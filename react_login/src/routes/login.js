@@ -19,7 +19,7 @@ const Login = ({setToken}) => {
               else{
                 setAuthUser(dat); 
                 console.log('token func', dat)
-                setToken({email:email, token: Math.floor(Math.random() * Math.floor(100)), username: dat.username});
+                setToken({email:email, token: Math.floor(Math.random() * Math.floor(100)), username: dat.username, avatar: dat.avatar});
               }
         })
     }

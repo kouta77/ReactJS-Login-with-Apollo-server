@@ -12,4 +12,5 @@ model userdata {
   username String
   email    String @unique
   password String
+  avatar   String?
 }
