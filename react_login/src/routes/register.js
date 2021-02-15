@@ -1,10 +1,11 @@
 import React,{useState, useEffect} from 'react'
-import {registerUser} from '../backend/userMutations'
+import {REGISTER_USER} from '../backend/userMutations'
 import {Redirect} from 'react-router-dom'
 import Avatar from 'react-avatar-edit';
 import {getBase64} from '../components/utils';
+import {useMutation} from '@apollo/client'
 
-const register = () => {
+function Register ()  {
     const [error, setError] = new useState('');
     const [name, setName] = new useState('');
     const [email, setEmail] = new useState('');
@@ -13,6 +14,8 @@ const register = () => {
     const [finished, setFinished] = new useState('');
     const [preview, setPreview] = new useState();
     let src = null//'./images/bg-01.jpg';
+
+    const [registerUser, { data }] = useMutation(REGISTER_USER);
 
     const handleRegister = (e) => {
       e.preventDefault();
@@ -38,14 +41,13 @@ const register = () => {
         return null
       }
 
-      registerUser({username: name, email: email, password: pass, avatar: preview}, (dat)=>{
-        console.log('REGISTERED')
-          if(dat.message)
-              setError(dat.message)
-              else{
-              setFinished(true);
-              }
-        })
+      registerUser({ variables: {username: name, email: email, password: pass, avatar: preview}}).then( d => {
+        setFinished(true);
+      }).catch(e => {
+        console.log(e)
+        if(e)
+        setError(`${e}`)
+      })
     }
 
     const onClose = () => {
@@ -68,7 +70,7 @@ const register = () => {
         {
           error?
             <div className="alert alert-danger" role="alert">
-              Error: {error}
+              {error}
             </div>
         : <></>
         }
@@ -156,4 +158,4 @@ const register = () => {
     );
 }
 
-export default register;
+export default Register;

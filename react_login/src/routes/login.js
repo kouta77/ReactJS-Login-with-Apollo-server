@@ -1,26 +1,26 @@
 import React,{useState, useEffect} from 'react'
-import {loginUser} from '../backend/userMutations'
+import {LOGIN_USER} from '../backend/userMutations'
 import './css/main.css';
 import {Redirect} from 'react-router-dom'
 import PropTypes from 'prop-types';
-
+import {useMutation} from '@apollo/client'
 
 const Login = ({setToken}) => {
     const [error, setError] = new useState('');
     const [email, setEmail] = new useState('');
     const [pass, setPass] = new useState('');
     const [authUser, setAuthUser] = new useState();
+    const [loginUser, { data }] = useMutation(LOGIN_USER);
 
     const HandleLogin = e => {
       e.preventDefault()
-        loginUser({email: email, password: pass}, (dat)=>{
-            if(dat.message)
-              setError(dat.message)
-              else{
-                setAuthUser(dat); 
-                console.log('token func', dat)
-                setToken({email:email, token: Math.floor(Math.random() * Math.floor(100)), username: dat.username, avatar: dat.avatar});
-              }
+      
+        loginUser({ variables:{email: email, password: pass}}).then((dat)=>{
+            setAuthUser(dat.data.loginUser); 
+            console.log('token func', dat.data.loginUser)
+            setToken({email:email, token: Math.floor(Math.random() * Math.floor(100)), username: dat.data.loginUser.username, avatar: dat.data.loginUser.avatar});
+        }).catch( e => {
+          setError(`${e}`)
         })
     }
 
@@ -33,7 +33,7 @@ const Login = ({setToken}) => {
           {
             error?
               <div className="alert alert-danger" role="alert">
-                Error: {error}
+                {error}
               </div>
           : <></>
           }

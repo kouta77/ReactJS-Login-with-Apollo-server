@@ -18,7 +18,7 @@ function App() {
     console.log('auth token', token)
   }, [token])
 
-  return (
+  return (      
     <Router>
       <div className="Container">
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -56,7 +56,6 @@ function App() {
         }
       </div>
     </Router>
-
   );
 }
 

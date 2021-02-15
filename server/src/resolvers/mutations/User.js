@@ -8,16 +8,26 @@ const User = {
     createUser: async (parent, args) => {
         
         const password = await bcrypt.hash(args.data.password, 10);
-        console.log('password', password)
-        console.log('IMG', args.data.avatar)
+        //console.log('password', password)
+        //console.log('IMG', args.data.avatar)
         let newUser = Prisma.CreateUserInput
 
         newUser = {username: args.data.username, email: args.data.email, password: password, avatar: args.data.avatar}
 
-        const createdUser = await prisma.userdata.create({data: newUser});
+        try {
+            const createdUser = await prisma.userdata.create({data: newUser});
+            return createdUser;
+        } catch ( error ) {
+            console.log("ERROR", error.meta)
 
-        return createdUser;
+            if(error.meta.target == "email_unique"){
+                throw new Error("Email alrady registered!");
+            }
+        }
+
+        //if(!createdUser.errors.length > 0) throw new Error("User does not exist!");
     },
+
     loginUser: async (parent, args) => {
         const dbUser = await prisma.userdata.findUnique({
             where:{

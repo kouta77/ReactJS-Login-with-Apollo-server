@@ -1,74 +1,31 @@
+import React from 'react';
+import {gql} from '@apollo/client';
+
 const GRAPTH_URL = process.env.REACT_APP_GRAPHQL_URL;
 
-const registerUser = async (usr, callback) => {
-  console.log('url', GRAPTH_URL)
-    let theQuery = `
-    mutation{
-        createUser(data:{username:"${usr.username}", email:"${usr.email}",password:"${usr.password}", avatar:"${usr.avatar}"}){
-          username
-          email
-        }
+const REGISTER_USER = gql`
+mutation CreateUser($username:String!, $email:String!, $password:String!, $avatar:String){
+      createUser(data:{username:$username, email:$email,password:$password, avatar:$avatar}){
+      username
+      email
+      avatar
       }
-    `
-
-    const response = await fetch(GRAPTH_URL,
-    {
-        method: 'POST',
-        headers: {
-            'content-type':'application/json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify({query: theQuery})
     }
-    );
-    
-    const data = await response.json();
-    console.log(data);
+`;
 
-    if(data.errors)
-    callback(data.errors[0]);
-    else
-    callback(data);
-        //.then(response => response.json())
-        //.then(data => {console.log('data returned',data); callback(data)});///
-}
-
-
-
-const loginUser = async (usr,callback) => {
-  console.log('url', GRAPTH_URL)
-    let theQuery = `
-      mutation{
-        loginUser(email:"${usr.email}", password:"${usr.password}"){
-          username
-          email
-          avatar
+const LOGIN_USER = gql`
+      mutation 
+        loginUser($email:String!, $password:String!){
+            loginUser(email:$email, password:$password){
+            username
+            email
+            avatar
+          }
         }
-      }
     `
-    
-    const response = await fetch(GRAPTH_URL,
-    {
-        method: 'POST',
-        headers: {
-            'content-type':'application/json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify({ query: theQuery })
-    }
-    );
-    const data = await response.json();
-    console.log(data);
-    if(data.errors)
-    callback(data.errors[0]);
-    else
-    callback(data.data.loginUser);
-        //.then(response => response.json())
-        //.then(data => {console.log('data returned',data); callback(data)});///
-}
 
 
 export {
-    registerUser,
-    loginUser
+    REGISTER_USER,
+    LOGIN_USER
 };
