@@ -13,9 +13,9 @@ import {
 
 function App() {
   const { token, setToken} = useToken();
-  console.log('new user token', token);
+
   useEffect(() => {
-    console.log('auth token', token)
+    console.log('Token Changed')
   }, [token])
 
   return (      

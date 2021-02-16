@@ -16,19 +16,22 @@ const Login = ({setToken}) => {
       e.preventDefault()
       
         loginUser({ variables:{email: email, password: pass}}).then((dat)=>{
-            setAuthUser(dat.data.loginUser); 
-            console.log('token func', dat.data.loginUser)
-            setToken({email:email, token: Math.floor(Math.random() * Math.floor(100)), username: dat.data.loginUser.username, avatar: dat.data.loginUser.avatar});
+
+          console.log('Login Data', dat.data)
+          setAuthUser(dat.data.loginUser.user); 
+          setToken(dat.data.loginUser);
+
         }).catch( e => {
           setError(`${e}`)
         })
     }
 
     useEffect(() => {
-        console.log('very new auth user', authUser);
+        console.log('AUTH USER', authUser);
     }, [authUser])
 
     return (
+      
       <div className="limiter">
           {
             error?
