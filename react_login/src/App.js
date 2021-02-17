@@ -4,6 +4,7 @@ import Login from './routes/login'
 import Register from './routes/register'
 import Wellcome from './routes/wellcome'
 import useToken from './components/useToken'
+import {Redirect} from 'react-router-dom'
 
 import {
   BrowserRouter as Router,
@@ -15,7 +16,7 @@ function App() {
   const { token, setToken} = useToken();
 
   useEffect(() => {
-    console.log('Token Changed')
+    console.log('Token Changed', token)
   }, [token])
 
   return (      
@@ -41,16 +42,16 @@ function App() {
             <Register />
           </Route>
           <Route path="/">
-            <Login setToken={setToken}/>
+            <Redirect to={"/login"} setToken={setToken}/>
           </Route>
         </Switch> 
         :
         <Switch>
           <Route path="/wellcome">
-          <Wellcome />
+            <Wellcome />
           </Route>
           <Route path="/">
-            <Wellcome />
+            <Redirect to={"/wellcome"}/>
           </Route>
         </Switch>
         }

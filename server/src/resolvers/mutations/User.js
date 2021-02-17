@@ -34,7 +34,7 @@ const User = {
         const userEmail = dbUser.email;
         const samePassword = await bcrypt.compare(args.password, dbUser.password);
 
-        const token = jwt.sign({ userID }, appSecret, { expiresIn: 300 });
+        const token = jwt.sign({ userID }, appSecret, { expiresIn: 10 });
         //const refreshToken = jwt.sign({ userID }, appSecret, { expiresIn: "24d" });
 
         if (samePassword == true)

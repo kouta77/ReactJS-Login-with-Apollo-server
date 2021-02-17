@@ -3,9 +3,10 @@ const { DecodedToken } = require('../../decodetoken');
 const prisma = new PrismaClient();
 
 const User = {
-    allUsers: (parent, args, { req }) => {
-        const decoded = DecodedToken(req);
-        console.log('decoded', decoded);
+    allUsers: (parent, args, context) => {
+        console.log('context', context);
+        const decoded = DecodedToken(context);
+        //console.log('decoded', decoded);
         return prisma.userdata.findMany(args)
     },
     user: (parent, args) => {

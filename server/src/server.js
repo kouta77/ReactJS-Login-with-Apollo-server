@@ -8,9 +8,9 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     context: ({ req }) => {
-        const token = req.headers.authorization || '';
-        console.log('Logged TOKEN', token);
-        return { token };
+        const authorization = req.headers.authorization || '';
+        console.log('Logged TOKEN', authorization);
+        return { authorization };
     },
     formatError: (err) => {
         if (err.message.startsWith("Database Error: ")) {

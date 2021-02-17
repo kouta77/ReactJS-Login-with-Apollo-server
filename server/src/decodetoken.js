@@ -3,7 +3,8 @@ const appSecret = process.env.APP_SECRET;
 
 
 const DecodedToken = (req, requireAuth = true) => {
-    const header = req.req.headers.authorization;
+    console.log('req', req)
+    const header = req.authorization;
 
     if (header) {
         const token = header.replace('Bearer ', '');
