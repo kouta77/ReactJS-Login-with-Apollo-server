@@ -6,8 +6,9 @@ features:
 - user login
 - user signup
 - route protection
-- graphql backend
-- auth security
+- login/signup field verification
+- graphql/apollo/prisma2 backend
+- auth security & JWT
 
 
 # Steps to run this app demo:
